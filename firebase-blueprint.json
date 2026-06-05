@@ -1,0 +1,32 @@
+{
+  "entities": {
+    "allowed_user": {
+      "title": "Allowed User Whitelist",
+      "description": "Represents an email address that is allowed to access the application without a password.",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "The allowed email address of the user."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when this email was added to the whitelist."
+        },
+        "addedBy": {
+          "type": "string",
+          "description": "The email address of the admin/user who added this entry."
+        }
+      },
+      "required": ["email", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/allowed_users/{userId}": {
+      "schema": "allowed_user",
+      "description": "Collection of whitelisted emails allowed to access the publisher dashboard."
+    }
+  }
+}
